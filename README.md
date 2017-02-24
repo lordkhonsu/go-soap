@@ -43,6 +43,7 @@ func main() {
 
 * Lots of XPath commands still missing
 * Schema validation (enums, field requirements etc)
+* CDATA for XML
 * Tests
 
 ## License
