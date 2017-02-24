@@ -41,7 +41,7 @@ func main() {
 
 ## Derived types
 
-You can register to use a derived type at an exact location by doing so:
+You can register to use a derived type at an exact location by writing:
 
 ```
 	request.SetTypeExtension("/s:Envelope/Body[1]/SampleOperationMsg[1]", "tns:SampleDerivedOperationMsg")
