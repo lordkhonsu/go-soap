@@ -2,7 +2,7 @@
 
 ## Description
 
-go-soap has the target to provide a simple access interface for working with SOAP endpoints specified by WSDL
+go-soap has the target to provide a simple access interface for working with SOAP endpoints specified by WSDL in Go
 
 ## Sample
 
@@ -35,9 +35,15 @@ func main() {
 
 	fmt.Println(response.XML())
 
-	// use response.Body().XPath(...) to receive the values you need
+	// use response.Body().XPath(...) to fetch the values you need
 }
 ```
+
+## To-do
+
+* Lots of XPath commands still missing
+* Schema validation (enums, field requirements etc)
+* Tests
 
 ## License
 
