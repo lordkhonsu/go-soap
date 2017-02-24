@@ -39,6 +39,14 @@ func main() {
 }
 ```
 
+## Derived types
+
+You can register to use a derived type at an exact location by doing so:
+
+```
+	request.SetTypeExtension("/s:Envelope/Body[1]/SampleOperationMsg[1]", "tns:SampleDerivedOperationMsg")
+```
+
 ## To-do
 
 * Lots of XPath commands still missing
