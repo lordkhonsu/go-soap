@@ -3,6 +3,8 @@ package wsdl
 import (
 	"fmt"
 	"strings"
+
+	"github.com/lordkhonsu/go-soap/dom"
 )
 
 // Service defines a single service endpoint in a WSDL client
@@ -19,7 +21,8 @@ func (s *Service) init() {
 	s.operations = map[string]*Operation{}
 	ports := s.client.wsdl.XPath("/definitions/service[@name='%s']/port", s.name)
 	for _, port := range ports.All() {
-		operations := s.client.wsdl.XPath("/definitions/binding[@name='%s']/operation", port.GetAttributeValue("name"))
+		_, bindingName := dom.SplitFQName(port.GetAttributeValue("binding"))
+		operations := s.client.wsdl.XPath("/definitions/binding[@name='%s']/operation", bindingName)
 		for _, operation := range operations.All() {
 			name := operation.GetAttributeValue("name")
 			s.operations[name] = &Operation{
