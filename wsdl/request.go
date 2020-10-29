@@ -2,9 +2,10 @@ package wsdl
 
 import (
 	"bytes"
-	"github.com/lordkhonsu/go-soap/dom"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/lordkhonsu/go-soap/dom"
 )
 
 // Request wraps a single SOAP request
@@ -135,8 +136,8 @@ func (r *Request) buildBody() {
 	r.body.Children.ClearAll()
 
 	// write body; find message for body
-	name := r.operation.domNode.XPath("input").First().GetAttributeValue("name")
-	message := r.wsdl.XPath("/definitions/message[@name='%s']", name).First()
+	_, messageName := dom.SplitFQName(r.operation.domNode.XPath("input").First().GetAttributeValue("message"))
+	message := r.wsdl.XPath("/definitions/message[@name='%s']", messageName).First()
 	messageElement := message.XPath("part").First().GetAttributeValue("element")
 
 	// find element for message
